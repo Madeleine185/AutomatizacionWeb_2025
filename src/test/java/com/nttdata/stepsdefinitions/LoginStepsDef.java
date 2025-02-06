@@ -73,6 +73,30 @@ public class LoginStepsDef {
         driver = getDriver();
         principalStep.confirmarMontoFinal();
     }
+
+    @Cuando("finalizo la compra")
+    public void finalizoLaCompra() throws InterruptedException {
+
+        driver = getDriver();
+        screenShot();
+        principalStep.FinalizarCompra();
+        Thread.sleep(1000);
+
+    }
+
+    @Entonces("valido el titulo de la pagina del carrito")
+    public void validoElTituloDeLaPaginaDelCarrito() {
+        driver = getDriver();
+       principalStep.validarTituloCarrito();
+
+    }
+
+    @Y("vuelvo a validar el calculo de precios en el carrito")
+    public void vuelvoAValidarElCalculoDePreciosEnElCarrito() {
+        driver = getDriver();
+        principalStep.calculoDePreciosCarrito();
+        screenShot();
+    }
 }
 
 

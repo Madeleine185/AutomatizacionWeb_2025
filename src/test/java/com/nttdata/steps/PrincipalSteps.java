@@ -59,13 +59,28 @@ public class PrincipalSteps {
     }
 
     public void confirmarMontoFinal(){
-        float precio_unitario = Float.parseFloat(this.driver.findElement(PrincipalPage.precioPorUnidad.getText().substring(3));
-        float cantidad_producto = Float.parseFloat(this.driver.findElement(PrincipalPage.cantidadProductos).getText());
-        float total_monto = Float.parseFloat(this.driver.findElement(PrincipalPage.total).getText().substring(3));
+        float precioPorUnidad  = Float.parseFloat(this.driver.findElement(PrincipalPage.precioPorUnidad).getText().substring(3));
+        float cantidadProducto = Float.parseFloat(this.driver.findElement(PrincipalPage.cantidadProductos).getText());
+        float totalMonto = Float.parseFloat(this.driver.findElement(PrincipalPage.total).getText().substring(3));
 
-        Assert.assertEquals("Monto Esperado Pop Up:",String.valueOf(total_monto),String.valueOf(precio_unitario*cantidad_producto));
+        Assert.assertEquals("Monto Esperado Pop Up:",String.valueOf(totalMonto),String.valueOf(precioPorUnidad*cantidadProducto));
+    }
+
+    public void FinalizarCompra(){
+        this.driver.findElement(PrincipalPage.finalizarCompra).click();
     }
 
 
+    public void validarTituloCarrito(){
+        this.driver.findElement(PrincipalPage.tituloCarrito).click();
+    }
+
+    public void calculoDePreciosCarrito(){
+        float precio_unitario = Float.parseFloat(this.driver.findElement(PrincipalPage.precioUnitarioFinal).getText().substring(3));
+        float cantidad_producto = Float.parseFloat(this.driver.findElement(PrincipalPage.cantidadProductoFinal).getText().substring(0,1));
+        float total_monto = Float.parseFloat(this.driver.findElement(PrincipalPage.montoTotalFinal).getText().substring(3));
+
+        Assert.assertEquals("Monto Esperado Carrito de Compras:",String.valueOf(total_monto),String.valueOf(precio_unitario*cantidad_producto));
+    }
 
 }
