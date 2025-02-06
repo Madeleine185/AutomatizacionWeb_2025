@@ -1,9 +1,11 @@
 package com.nttdata.stepsdefinitions;
 
+import com.nttdata.page.PrincipalPage;
 import com.nttdata.steps.LoginSteps;
 import com.nttdata.steps.PrincipalSteps;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
+import io.cucumber.java.es.Entonces;
 import io.cucumber.java.es.Y;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -57,6 +59,19 @@ public class LoginStepsDef {
         screenShot();
         principalStep.añadirAlCarrito();
         Thread.sleep(3000);
+    }
+
+    @Entonces("valido en el popup la confirmación del producto agregado")
+    public void validoEnElPopupLaConfirmacionDelProductoAgregado() {
+        driver = getDriver();
+        principalStep.confirmacionCarrito();
+    }
+
+    @Y("valido en el popup que el monto total sea calculado correctamente")
+    public void validoEnElPopupQueElMontoTotalSeaCalculadoCorrectamente() {
+
+        driver = getDriver();
+        principalStep.confirmarMontoFinal();
     }
 }
 

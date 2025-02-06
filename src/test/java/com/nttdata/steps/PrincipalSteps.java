@@ -51,7 +51,20 @@ public class PrincipalSteps {
 
         this.driver.findElement(PrincipalPage.buttonCarrito ).click();
     }
+    public void confirmacionCarrito(){
+        String checkconfirmacion = this.driver.findElement(PrincipalPage.confirmacionCarrito).getText();
+        String titulo_popup = checkconfirmacion.substring(1);
+        String mensajeEsperado = "Producto añadido correctamente a su carrito de compra";
+        Assert.assertEquals(mensajeEsperado,titulo_popup);
+    }
 
+    public void confirmarMontoFinal(){
+        float precio_unitario = Float.parseFloat(this.driver.findElement(PrincipalPage.precioPorUnidad.getText().substring(3));
+        float cantidad_producto = Float.parseFloat(this.driver.findElement(PrincipalPage.cantidadProductos).getText());
+        float total_monto = Float.parseFloat(this.driver.findElement(PrincipalPage.total).getText().substring(3));
+
+        Assert.assertEquals("Monto Esperado Pop Up:",String.valueOf(total_monto),String.valueOf(precio_unitario*cantidad_producto));
+    }
 
 
 
