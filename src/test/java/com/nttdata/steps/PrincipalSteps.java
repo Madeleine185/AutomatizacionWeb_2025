@@ -1,0 +1,58 @@
+package com.nttdata.steps;
+
+import com.nttdata.page.PrincipalPage;
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+
+public class PrincipalSteps {
+
+    private WebDriver driver;
+
+    //Generar el constructor
+
+    public PrincipalSteps (WebDriver driver){
+        this.driver = driver;
+    }
+
+    public void verCategoria (String categoria){
+        String categoria_pag = this.driver.findElement(PrincipalPage.categoryButton).getText();
+        System.out.println(categoria);
+        System.out.println(categoria_pag);
+        Assert.assertEquals("Nombre de la Categoría",categoria,categoria_pag);
+    }
+
+    public void clickButtonCategoria() {
+
+        this.driver.findElement(PrincipalPage.categoryButton).click();
+    }
+
+    public void verSubcategoria (String subCategoria){
+        String sub_categoria = this.driver.findElement(PrincipalPage.subcategoryButton).getText();
+        System.out.println(subCategoria);
+        System.out.println(sub_categoria);
+        Assert.assertEquals("Nombre de la Categoría",subCategoria,sub_categoria);
+    }
+
+    public void clickBtnSubcategoria() {
+
+        this.driver.findElement(PrincipalPage.subcategoryButton).click();
+    }
+
+    public void categoriaMen(){
+        this.driver.findElement(PrincipalPage.seccionMen).click();
+    }
+
+    public void AgregarProductos(){
+
+        this.driver.findElement(PrincipalPage.clickAgregar).click();
+    }
+
+    public void añadirAlCarrito(){
+
+        this.driver.findElement(PrincipalPage.buttonCarrito ).click();
+    }
+
+
+
+
+}
